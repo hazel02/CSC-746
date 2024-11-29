@@ -1,0 +1,36 @@
+//Write a program that will read input from a text file and write it into another file
+package file;
+/**
+ *
+ * @author USER PC
+ */
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+public class File {
+    public static void main(String[] args)
+    {
+        // Try block to check for exceptions
+        try {
+            FileReader fr = new FileReader("inputFile.txt");
+            // Creating a FileWriter object
+            FileWriter fw = new FileWriter("outputFile.txt");
+            String str = "";
+            int i;
+            while ((i = fr.read()) != -1) {
+                str += (char)i;
+            }
+            System.out.println(str);
+            fw.write(str);
+            fr.close();
+            fw.close();
+            System.out.println(
+                "File reading and writing both done");
+        }
+        // Catch block to handle the exception
+        catch (IOException e) {
+            System.out.println(
+                "There are some IOException");
+        }
+    }
+}
